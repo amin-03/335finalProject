@@ -15,12 +15,11 @@ module.exports = (client, databaseName, collectionName) => {
 
     router.post("/confirmation", async (req, res) =>{
         try {
-            await client.connect();
             const collection = client.db(databaseName).collection(collectionName);
             getBreed = req.body.dogBreed;
 
             const dogBreed = { breedName: getBreed};
-            result = await collection.insertOne(dogBreed);
+            await collection.insertOne(dogBreed);
         
             const variables = {
                 dogBreed: getBreed,
