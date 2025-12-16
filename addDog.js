@@ -26,10 +26,8 @@ module.exports = (client, databaseName, collectionName) => {
             };
             res.render("addDogConfirm", variables);
         } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
+            console.error(e);
+        } 
         
     });
     return router;

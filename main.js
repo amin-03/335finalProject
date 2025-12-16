@@ -14,7 +14,21 @@ require("dotenv").config({
    quiet: true,
 });
 
+async function startServer() {
+    try {
+        await client.connect();
+        console.log("Connected to MongoDB");
 
+        const port = process.env.PORT || 2025;
+        app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
+        });
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+startServer();
 
 const databaseName = "FinalProject"; //to my mongodb database name
 const collectionName = "dogCollection";
@@ -32,7 +46,7 @@ app.use("/addDog", addDog);
 app.get("/list", async (req, res) => {
    
     try {
-        await client.connect();
+        // await client.connect();
         const collection = client.db(databaseName).collection(collectionName);
         
         /* Listing all dogs */
@@ -68,9 +82,10 @@ app.get("/list", async (req, res) => {
         
     } catch (e) {
         console.error(e);
-    } finally {
-        await client.close();
-    }
+    } 
+    // finally {
+    //     await client.close();
+    // }
 });
 
 function getDogData(breed) {
@@ -88,7 +103,7 @@ function getDogData(breed) {
 
 app.get("/clear", async (req, res) => {
     try {
-      await client.connect();
+    //   await client.connect();
       
       const collection = client.db(databaseName).collection(collectionName);
       const result = await collection.drop();
@@ -96,9 +111,10 @@ app.get("/clear", async (req, res) => {
       res.render("clear");
    } catch (e) {
       console.error(e);
-   } finally {
-      await client.close();
-   }
+   } 
+//    finally {
+//       await client.close();
+//    }
 });
 const port = process.env.PORT || 2025;
 app.listen(port, () => {
