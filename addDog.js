@@ -1,36 +1,37 @@
 const express = require('express');
 
+const Dog = require("./Dog");
 
 
-module.exports = (client, databaseName, collectionName) => {
-    const router = express.Router();
+const router = express.Router();
 
-    router.use((req, res, next)=> {
-        next();
-    }) ;
+router.use((req, res, next)=> {
+    next();
+}) ;
 
-    router.get("/", (req, res) =>{
-        res.render("addDog");
-    });
+router.get("/", (req, res) =>{
+    res.render("addDog");
+});
 
-    router.post("/confirmation", async (req, res) =>{
-        try {
-            const collection = client.db(databaseName).collection(collectionName);
-            getBreed = req.body.dogBreed;
+router.post("/confirmation", async (req, res) =>{
+    try {
+            
+        getBreed = req.body.dogBreed;
 
-            const dogBreed = { breedName: getBreed};
-            await collection.insertOne(dogBreed);
+        const dog = new Dog({
+                breedName: getBreed
+        });
+        await dog.save();
+
+        res.render("addDogConfirm", {
+            dogBreed: getBreed
+        });
+    } catch (e) {
+        console.error(e);
+    } 
         
-            const variables = {
-                dogBreed: getBreed,
-            };
-            res.render("addDogConfirm", variables);
-        } catch (e) {
-            console.error(e);
-        } 
-        
-    });
-    return router;
-};
+});
+module.exports = router;   
+
 
 
