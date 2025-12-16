@@ -42,8 +42,8 @@ async function startServer() {
 startServer();
 
 
-app.get("/", (request, response) => {
-   response.render("index");
+app.get("/", (req, res) => {
+   res.render("index");
 });
 
 const addDog = require("./addDog");
