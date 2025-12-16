@@ -1,0 +1,13 @@
+/* Relies on at least the background-color, color and font-size properties.
+Relies on at least a google font. */
+@import url('fonts.googleapis.com');
+
+h1{
+    font-size:30px;
+}
+
+body{
+    background-color: aquamarine;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}

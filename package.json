@@ -1,0 +1,19 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "Abigail Min (amin03)\r No Group Members\r You can basically have a collection of dogs that you like to look at that you can select from the API.\r Youtube link:\r APIs:\r amin03@terpmail.umd.edu\r Render link:",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "mongodb": "^7.0.0"
+  },
+  "devDependencies": {}
+}
