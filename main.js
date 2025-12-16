@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const portNumber = 2025;
 const bodyParser = require("body-parser");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
@@ -101,7 +100,9 @@ app.get("/clear", async (req, res) => {
       await client.close();
    }
 });
+const port = process.env.PORT || 2025;
+app.listen(port, () => {
+    console.log(`main URL http://localhost:${port}/`);
 
+});
 
-app.listen(portNumber);
-console.log(`main URL http://localhost:${portNumber}/`);
