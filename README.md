@@ -7,7 +7,7 @@ No Group Members
 You can basically have a collection of dogs that you like to look at that you can select from the API.
 
 
-Youtube link: https://www.youtube.com/watch?v=WteMpW1gcSA
+Youtube link: https://youtube.com/shorts/_jztYeWF0qU?feature=share
 
 
 APIs: https://dogapi.dog/api/v2/breeds
